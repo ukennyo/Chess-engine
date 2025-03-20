@@ -39,7 +39,7 @@ typedef struct {
     int move; // The move to be reverted
     int castlePerm; // the castle permissions before the move was played
     int enPas; // the en passant square, if one was set
-    int_fiftyMove; // the 50 move rule status at the time
+    int fiftyMove; // the 50 move rule status at the time
     U64 posKey; // the position of the piece at the time the move was played
     } S_UNDO;
 //Board Structure definitions

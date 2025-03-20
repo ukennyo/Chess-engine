@@ -1,5 +1,7 @@
 // File to handle initialization tasks
 #include "defs.h"
+int sq64to120[64];
+int sq120to64[BRD_SQ_NUM];
 // Initialization function to initialize the 120 and 64 conversion arrays.
 void InitializeSq120to64(){
     // we use two types of arrays here for square mapping

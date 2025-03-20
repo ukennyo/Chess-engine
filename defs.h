@@ -82,7 +82,7 @@ typedef struct {
 
     //stores the number of rooks and queens for black, white and both
     int majPce[3];
-    
+
     //stores the number of knights and bishops for black, white and both
     //used in position evaluation, especially during for draw endgames
     //helps determine it a game can be draw based on material combinations
@@ -92,4 +92,17 @@ typedef struct {
     S_UNDO history[MAXGAMEMOVES]; //Everytime a move is made on the board, we will store the move number which we're at, the move which is about to be made, the castle perms before the move was made, the enpassant status etc.. (also the position key)
 } S_BOARD;
 
+//MACROS
+//Given file and rank, this macro gives us a coordinate to the equivalent square on the 120 square board
+#define FR2SQ(f,r) ((21+ (f)) +((r) * 10))
+
+//GLOBALS
+// Our board is in a 120 square representation to deal with borders, but the bitboard representation uses 64 squares. Because of this we need to be able to convert between 120 based and 64 based indexing.
+//to solve this we use two arrays which are defined globally to facilitate the conversion between 120-based and 64-based board indexing
+extern int sq120to64[BRD_SQ_NUM]; // maps 120 square to 64 square
+extern int sq64to120[64]; // maps 64 square to 120 square
+//the above arrays arre declared with the 'extern' keyword, allowing them to be accessed from any file
+
+//FUNCTIONS
+extern void AllInit(); //from init.c
 #endif //DEFS_H

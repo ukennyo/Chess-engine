@@ -126,6 +126,8 @@ typedef struct {
 //MACROS
 //Given file and rank, this macro gives us a coordinate to the equivalent square on the 120 square board
 #define FR2SQ(f,r) ((21+ (f)) +((r) * 10))
+//second macro to convert 120 bit to 64 bit
+#define SQ64(sq120) sq120to64[sq120]
 
 //GLOBALS
 // Our board is in a 120 square representation to deal with borders, but the bitboard representation uses 64 squares. Because of this we need to be able to convert between 120 based and 64 based indexing.
@@ -135,5 +137,11 @@ extern int sq64to120[64]; // maps 64 square to 120 square
 //the above arrays arre declared with the 'extern' keyword, allowing them to be accessed from any file
 
 //FUNCTIONS
+//init.c
+//function to initialize the board
 extern void AllInit(); //from init.c
+
+//bitboards.c
+//function to initialize the bitboards
+extern void printBitboard(U64 bb); //from bitboards.c
 #endif //DEFS_H

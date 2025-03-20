@@ -1,5 +1,6 @@
 #ifndef DEFS_H
 #define DEFS_H
+#include "stdlib.h"
 
 // unsigned 64-bit integer; can hold a large non-negative integer value (from 0 upto 615)
 // used in a chess engine to efficiently represent the positions of pieces, especially the pawns
@@ -90,6 +91,22 @@ typedef struct {
 
     int casltePerm; //Outputs which sides can be castled, by taking the sum of the numbers (1,2,4,8) assigned to white and black queen and king side's which can be castled
     S_UNDO history[MAXGAMEMOVES]; //Everytime a move is made on the board, we will store the move number which we're at, the move which is about to be made, the castle perms before the move was made, the enpassant status etc.. (also the position key)
+
+    //Piece List
+    //piece list is dimensioned as [13][10]
+    //the first dimension accounts for 13 chess piece types, in chess programming its common to assign numeric constants to represent piece types
+    //for example empty square(0), white pawn(1), white knight(2), white bishop(3), white queen(6) etc and so on...
+    //first dimension needs to have enough slots to accomodate all these piece types
+    /*13 spaces allows for: 
+    - an empty square value
+    - 6 white piece types
+    - 6 black piece types
+    */
+   //the second dimension represents the max number of pieces of each type that could possibly appear on a chess board
+   //for example, the second dimension is 10, it means we can have a maximum of 10 pieces of a singular piece (ex: white knight)
+   //allocating upto 10 slots for each type is necessary to consider the extreme possibilty for max pawn promotions.
+   // ex: 2 original white rooks + 8 pawn promotion white rooks = 10 rooks in total
+    int pList[13][10]
 } S_BOARD;
 
 //MACROS

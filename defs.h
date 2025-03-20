@@ -2,11 +2,25 @@
 #define DEFS_H
 #include "stdlib.h"
 
+//debugging assertions
+#define DEBUG
+#ifndef DEBUG
+#define ASSERT(n)
+#else
+//Assertion checking is crucial so we know that the moves are made within the boundaries
+#define ASSERT(n) if(!(n)) printf("Assertion failed: %s\n", #n); \
+printf("On %s "__DATE__); \
+printf(" at %s "__TIME__); \
+printf(" In File %s "__FILE__); \
+printf(" At Line %d "__LINE__); \
+exit(1); 
+#endif
+
 // unsigned 64-bit integer; can hold a large non-negative integer value (from 0 upto 615)
 // used in a chess engine to efficiently represent the positions of pieces, especially the pawns
 typedef unsigned long long U64;
 
-#define NAME "Vice 1.0"
+#define NAME "ChessEngine 1.0"
 #define BRD_SQ_NUM 120
 
 #define MAXGAMEMOVES 2048 //Never seen a chess game go over 1000 moves, so its safe to keep the max number of moves at this number.

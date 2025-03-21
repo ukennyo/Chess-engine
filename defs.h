@@ -120,7 +120,7 @@ typedef struct {
    //for example, the second dimension is 10, it means we can have a maximum of 10 pieces of a singular piece (ex: white knight)
    //allocating upto 10 slots for each type is necessary to consider the extreme possibilty for max pawn promotions.
    // ex: 2 original white rooks + 8 pawn promotion white rooks = 10 rooks in total
-    int pList[13][10]
+    int pList[13][10];
 } S_BOARD;
 
 //MACROS

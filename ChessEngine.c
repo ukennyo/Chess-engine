@@ -1,7 +1,7 @@
 #include "stdio.h"
 #include "defs.h"
 
-/*int main() {
+int main() {
     //Assume that sq120 and sq64 are already initialized
     AllInit(); // added here so main file can find and call the code
     int index =0;
@@ -18,7 +18,8 @@
         }
         return 0;
 }
-        */
+/* commented out code which was used to check if bitboards work as needed:
+
 int main() {
     AllInit();
     U64 playBitboard = 0ULL;
@@ -36,3 +37,4 @@ int main() {
     printBitboard(playBitboard);
 
        }
+    */

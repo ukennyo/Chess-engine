@@ -18,6 +18,8 @@ int main() {
         }
         return 0;
 }
+
+
 /* commented out code which was used to check if bitboards work as needed:
 
 int main() {

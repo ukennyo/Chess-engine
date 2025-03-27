@@ -1,7 +1,21 @@
 #include "stdio.h"
 #include "defs.h"
 
-//temp main function to test if bitcount function works through macro
+//another temp main to see how the set and clear masks work in our bitboard
+int main(){
+    AllInit();
+    int index = 0;
+    U64 playBitboard = 0ULL;
+    for (index = 0; index < 64; index++) {// index value is first set to 0
+        printf("Index:%d\n", index);
+        printBitboard(SetMask[index]);
+        printf("\n");
+
+    }
+    return 0;
+}
+
+/*temp main function to test if bitcount function works through macro
 int main (){
     AllInit();
     U64 playBitboard = 0ULL;
@@ -21,7 +35,7 @@ int main (){
 }
 
 
-
+*/
 
 
 //commented out, to test bitboards pop and count functions

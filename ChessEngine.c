@@ -1,7 +1,28 @@
 #include "stdio.h"
 #include "defs.h"
 
-int main() {
+//temp main function to test if bitcount function works through macro
+int main (){
+    AllInit();
+    U64 playBitboard = 0ULL;
+    playBitboard |= (1ULL << SQ64(D2));
+    playBitboard |= (1ULL << SQ64(D3));
+    playBitboard |= (1ULL << SQ64(D4));
+    printf("\n");
+    printBitboard(playBitboard);
+    int count =CNT(playBitboard);
+    printf("\n");
+    printf("Count: %d\n", count);
+    return 0;
+
+}
+
+
+
+
+
+//commented out, to test bitboards pop and count functions
+/*int main() {
     //Assume that sq120 and sq64 are already initialized
     AllInit(); // added here so main file can find and call the code
     int index =0;
@@ -18,8 +39,7 @@ int main() {
         }
         return 0;
 }
-
-
+*/
 /* commented out code which was used to check if bitboards work as needed:
 
 int main() {

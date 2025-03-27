@@ -128,7 +128,10 @@ typedef struct {
 #define FR2SQ(f,r) ((21+ (f)) +((r) * 10))
 //second macro to convert 120 bit to 64 bit
 #define SQ64(sq120) sq120to64[sq120]
-
+//third macro to pop bits from bitboards
+#define POP (b)PopBit(b)
+// fourth macro to count the bits in bitboards
+#define CNT(b) CountBits(b)
 //GLOBALS
 // Our board is in a 120 square representation to deal with borders, but the bitboard representation uses 64 squares. Because of this we need to be able to convert between 120 based and 64 based indexing.
 //to solve this we use two arrays which are defined globally to facilitate the conversion between 120-based and 64-based board indexing
@@ -144,4 +147,6 @@ extern void AllInit(); //from init.c
 //bitboards.c
 //function to initialize the bitboards
 extern void printBitboard(U64 bb); //from bitboards.c
+extern int PopBit(U64 *bb);
+extern int CountBits(U64 b);
 #endif //DEFS_H

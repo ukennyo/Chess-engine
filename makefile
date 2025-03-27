@@ -1,2 +1,2 @@
 all:
-	gcc ChessEngine.c init.c bitboards.c -o ChessEngine
+	gcc ChessEngine.c init.c bitboards.c hashkeys.c -o ChessEngine

@@ -13,8 +13,11 @@ int main (){
     int count =CNT(playBitboard);
     printf("\n");
     printf("Count: %d\n", count);
-    return 0;
 
+    int index = POP(&playBitboard);
+    printf("index: %d\n", index);
+    printBitboard(playBitboard);
+    return 0;
 }
 
 

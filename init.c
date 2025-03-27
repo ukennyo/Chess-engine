@@ -2,6 +2,22 @@
 #include "defs.h"
 int sq64to120[64];
 int sq120to64[BRD_SQ_NUM];
+
+U64 SetMask[64]; //array used to set a specific bit in a bitboard
+U64 ClearMask[64]; //array used to clear a specific bit from bitboard
+
+void InitBitMasks(){ //where set and clear masks are initialized
+    int index = 0;
+    for (index = 0; index < 64; index++) {// index value is first set to 0
+        SetMask[index] = 0ULL;
+        ClearMask[index] = 0ULL;
+    }
+    for (index = 0; index < 64; index++) {
+        SetMask[index] |= (1ULL << index); //each element at index is set to 1 unsigned long long is shifted left by 'index' positions (this sets 'index' bit to 1)
+        ClearMask[index] = ~SetMask[index]; //each element at 'index' is set to the complement of its corresponding setMask value (~ denotes bitwise complement)
+    }
+}
+
 // Initialization function to initialize the 120 and 64 conversion arrays.
 void InitializeSq120to64(){
     // we use two types of arrays here for square mapping
@@ -34,4 +50,5 @@ void InitializeSq120to64(){
 
 void AllInit() {
     InitializeSq120to64();
+    InitBitMasks();
 }

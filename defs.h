@@ -132,12 +132,19 @@ typedef struct {
 #define POP(b) PopBit(b)
 // fourth macro to count the bits in bitboards
 #define CNT(b) CountBits(b)
+//fifth macro which helps perform bitwise OR operation between the bitboard and the corresponding SetMask value, effectively setting the bit at the specific square
+#define CLRBIT(bb,sq) ((bb) &= ClearMask[(sq)])
+//sixth macro which performs bitwise AND operation between the bitboard and the corresponding ClearMask value, effectively clearing the bit at the specified square
+#define SETBIT(bb,sq) ((bb) |= SetMask[(sq)])
+
 //GLOBALS
 // Our board is in a 120 square representation to deal with borders, but the bitboard representation uses 64 squares. Because of this we need to be able to convert between 120 based and 64 based indexing.
 //to solve this we use two arrays which are defined globally to facilitate the conversion between 120-based and 64-based board indexing
 extern int sq120to64[BRD_SQ_NUM]; // maps 120 square to 64 square
 extern int sq64to120[64]; // maps 64 square to 120 square
 //the above arrays arre declared with the 'extern' keyword, allowing them to be accessed from any file
+extern U64 SetMask[64]; //masking to set specific bits to 1
+extern U64 ClearMask[64]; // to obtain the complement of setmask
 
 //FUNCTIONS
 //init.c

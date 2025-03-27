@@ -1,10 +1,44 @@
 // File to handle initialization tasks
 #include "defs.h"
+#include "stdlib.h"
+//macro used to generate a random 64 bit number
+//below comments explain visually how it works
+//all it's doing is filling 64 bits with random numbers 
+// 0000 000000000000000 000000000000000 000000000000000 111111111111111  when rand generates a random number, it generates a 15 bit random number, so we split it into 4 parts to make it for 64 bits we have available
+// 0000 000000000000000 000000000000000 111111111111111 000000000000000 
+// 0000 000000000000000 111111111111111 000000000000000 000000000000000
+// 0000 111111111111111 000000000000000 000000000000000 000000000000000 
+// 1111 000000000000000 000000000000000 000000000000000 000000000000000 // bitwise AND the last 15 bits random number and shift by 60 to fill the last 4 bits
+#define RAND_64 (           (U64)rand() + \                 
+                            (U64)rand() << 15 + \           
+                            (U64)rand() << 30 + \           
+                            (U64)rand() << 45 + \           
+                            ((U64)rand() & 0xf) << 60     ) 
 int sq64to120[64];
 int sq120to64[BRD_SQ_NUM];
 
 U64 SetMask[64]; //array used to set a specific bit in a bitboard
 U64 ClearMask[64]; //array used to clear a specific bit from bitboard
+
+U64 PieceKeys[13][120]; //explain these
+U64 SideKey;
+U64 CastleKeys[16];
+
+void InitHashKeys(){
+
+    int index = 0;
+    int index2 = 0; 
+    for(index = 0; index < 13; ++index){
+        for(index2 = 0; index2 < 120; ++index2){
+            PieceKeys[index][index2] = RAND_64;
+        }
+    }
+    SideKey = RAND_64;
+    for(index =0; index <16; ++index){
+    CastleKeys[index] = RAND_64;
+    }
+
+}
 
 void InitBitMasks(){ //where set and clear masks are initialized
     int index = 0;

@@ -129,7 +129,7 @@ typedef struct {
 //second macro to convert 120 bit to 64 bit
 #define SQ64(sq120) sq120to64[sq120]
 //third macro to pop bits from bitboards
-#define POP (b)PopBit(b)
+#define POP(b) PopBit(b)
 // fourth macro to count the bits in bitboards
 #define CNT(b) CountBits(b)
 //GLOBALS
